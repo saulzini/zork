@@ -2,12 +2,13 @@
 //
 
 #include <iostream>
-
+#include "World.h"
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
+	World *world = new World();
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
