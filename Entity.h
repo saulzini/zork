@@ -18,11 +18,12 @@ class Entity
 {
 
 public:
-	Entity(const char* name, const char* description, Entity* parent);
+	Entity(const char* name, const char* description, Entity* parentEntity);
 	EntityType type;
 	string name;
 	string description;
 	list<Entity*> contains;
 	Entity* parent;
+
 };
 
