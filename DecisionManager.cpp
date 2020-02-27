@@ -3,12 +3,13 @@
 #include "Room.h"
 #include <iostream>
 #include <sstream>
+#include "Player.h"
 DecisionManager::DecisionManager(World* world)
 {
 	this->world = world;
 }
 
-void DecisionManager::parseDecision()
+void DecisionManager::ParseDecision()
 {
 	//Converting sentence into array of words
 	istringstream iss(decision);
@@ -18,68 +19,87 @@ void DecisionManager::parseDecision()
 	}
 }
 
-void DecisionManager::manageDecision()
+void DecisionManager::ManageDecision()
 {
 	if (decision == "") {
-		unsolved();
-		clearInput();
+		Unsolved();
+		ClearInput();
 		return;
 	}
 	//Parsing input
-	parseDecision();
+	ParseDecision();
 	//Commands availables
 	string command = words[0];
 
 	if ( command == "move" ) {
-		solveMove();
+		SolveMove();
+	}
+	else if (command == "open") {
+		SolveOpenDoor();
 	}
 	else if ( command == "pick" ) {
-		solvePick();
+		SolvePick();
 	}
 	else if ( command == "toss") {
-		solveToss();
+		SolveToss();
 	}
 	else if (command == "attack") {
-		solveAttack();
+		SolveAttack();
 	}
 	else {
-		unsolved();
+		Unsolved();
 	}
-	clearInput();
+	ClearInput();
 }
 
-void DecisionManager::initialize()
+void DecisionManager::Initialize()
 {
-	Room *room = world->getPlayerCurrentRoom();
+	Room *room = world->GetPlayerCurrentRoom();
 	room->DisplayDescription();
 }
 
-void DecisionManager::solveMove()
+void DecisionManager::SolveMove()
 {
-	cout << "move is selected" << endl;
+	if (words.size() > 1) {
+		world->player->SolveMovement(words[1]);
+	}
+	else {
+		cout << "Command move incomplete: missing direction word" << endl;
+	}
+
 }
 
-void DecisionManager::solvePick()
+void DecisionManager::SolveOpenDoor()
+{
+	if (words.size() > 1) {
+		world->player->SolveOpenDoor(words[1]);
+	}
+	else {
+		cout << "Command open door incomplete: missing direction word" << endl;
+	}
+}
+
+void DecisionManager::SolvePick()
 {
 	cout << "pick is selected" << endl;
 }
 
-void DecisionManager::solveToss()
+void DecisionManager::SolveToss()
 {
 	cout << "toss is selected" << endl;
 }
 
-void DecisionManager::solveAttack()
+void DecisionManager::SolveAttack()
 {
 	cout << "attack is selected" << endl;
 }
 
-void DecisionManager::unsolved()
+void DecisionManager::Unsolved()
 {
 	cout << "Command not found, please try again: move,pick,toss,attack" << endl;
 }
 
-void DecisionManager::clearInput()
+void DecisionManager::ClearInput()
 {
 	decision = "";
 	words.clear();

@@ -24,6 +24,6 @@ public:
 	string description;
 	list<Entity*> contains;
 	Entity* parent;
-
+	void ChangeParent(Entity* newParent);
 };
 

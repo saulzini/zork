@@ -10,3 +10,16 @@ Entity::Entity(const char* name, const char* description, Entity* parentEntity =
 	}
 	//cout << "Entity created with name:"<< name << "  , description " << description << ", type:" << type <<endl;
 }
+
+
+
+
+void Entity::ChangeParent(Entity* newParent)
+{
+	//Delete from parent contains
+	parent->contains.remove(this);
+	//Add into new parent contains
+	parent->contains.push_back(this);
+	// Assign new parent
+	parent = newParent;
+}

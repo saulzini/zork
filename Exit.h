@@ -1,7 +1,7 @@
 #pragma once
 #include "Entity.h"
 class Room;
-
+class Item;
 class Exit :public Entity
 {
 public:
@@ -10,10 +10,13 @@ public:
 	bool closed;
 	bool locked;
 	Room* destination;
-	Entity* key;
+	Item* key;
 	
-	//string GetSourceRoomName();
-	//string GetDestinationRoomName();
-
+	Room* GetCurrentDestinationRoom(Room *currentRoom);
+	void SetLocked(bool locked);
+	void SetClosed(bool closed);
+	void OpenExit(Item* key);
+	void OpenExitMessage();
+	bool IsClosed();
 };
 

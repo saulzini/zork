@@ -8,7 +8,7 @@ class Creature : public Entity
 public:
 	Creature(const char* name, const char* description, Room* room);
 	float life = 100.0f;
-	bool isAlive();
-	Room* getCurrentRoom();
+	bool IsAlive();
+	Room* GetCurrentRoom();
 };
 

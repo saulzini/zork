@@ -13,16 +13,17 @@ public:
 	string decision;
 	vector<string> words;
 
-	void parseDecision();
-	void manageDecision();
+	void ParseDecision();
+	void ManageDecision();
 
-	void initialize();
-	void solveMove();
-	void solvePick();
-	void solveToss();
-	void solveAttack();
-	void unsolved();
-	void clearInput();
+	void Initialize();
+	void SolveMove();
+	void SolveOpenDoor();
+	void SolvePick();
+	void SolveToss();
+	void SolveAttack();
+	void Unsolved();
+	void ClearInput();
 
 };
 

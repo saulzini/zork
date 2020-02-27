@@ -8,14 +8,15 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+	cout << "Welcome to your new conquest \nThe mission in this game is to get free from the dungeon.\nLet's Begin\n" << endl;
 	World *world = new World();
 	DecisionManager* decisionManager = new DecisionManager(world);
-	decisionManager->initialize();
+	decisionManager->Initialize();
 
-	while (world->isPlayerAlive() && !world->isMissionComplete() )
+	while (world->IsPlayerAlive() && !world->IsMissionComplete() )
 	{
 		getline(cin,decisionManager->decision);
-		decisionManager->manageDecision();
+		decisionManager->ManageDecision();
 	}
 	cout << "Thanks for playing" << endl;
 	return 0;
