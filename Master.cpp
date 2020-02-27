@@ -3,12 +3,22 @@
 
 #include <iostream>
 #include "World.h"
+#include "DecisionManager.h"
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
 	World *world = new World();
+	DecisionManager* decisionManager = new DecisionManager(world);
+	decisionManager->initialize();
 
+	while (world->isPlayerAlive() && !world->isMissionComplete() )
+	{
+		getline(cin,decisionManager->decision);
+		decisionManager->manageDecision();
+	}
+	cout << "Thanks for playing" << endl;
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

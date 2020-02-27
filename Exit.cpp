@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-Exit::Exit(const char* name, const char* description, Room* source, Room* destination) :
+Exit::Exit(const char* name, const char* destinationName, const char* description, Room* source, Room* destination) :
 	Entity(name, description, (Entity*)source),
 	closed(false), locked(false), key(NULL), destination(destination)
 {
@@ -11,11 +11,12 @@ Exit::Exit(const char* name, const char* description, Room* source, Room* destin
 
 	if (description) {
 		destination->contains.push_back(this);
+		destination->SetExit(destinationName, this);
 	}
 
-	//cout << "Door created with name:" << name << "  , description " << description << ", type:" << type << endl;
+	source->SetExit(name, this);
 }
-
+/*
 string Exit::GetSourceRoomName()
 {
 	if (parent) {
@@ -31,3 +32,4 @@ string Exit::GetDestinationRoomName()
 	}
 	return "No Destination Room Found";
 }
+*/

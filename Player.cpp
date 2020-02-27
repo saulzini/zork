@@ -6,4 +6,3 @@ Player::Player(const char* name, const char* description, Room* room) :Creature(
 	type = PLAYER;
 	//cout << "Player created with name:"<< name << "  , description " << description << ", type:" << type <<endl;
 }
-
