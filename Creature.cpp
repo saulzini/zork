@@ -3,7 +3,7 @@
 #include "Item.h"
 Creature::Creature(const char* name, const char* description, Room* room) :Entity(name, description, (Entity*)room)
 {
-	type = CREATURE;
+	type = EntityType::CREATURE;
 }
 
 bool Creature::IsAlive()

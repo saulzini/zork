@@ -4,7 +4,7 @@
 #include "Item.h"
 Player::Player(const char* name, const char* description, Room* room) :Creature(name, description, room)
 {
-	type = PLAYER;
+	type = EntityType::PLAYER;
 }
 
 void Player::SolveMovement(string direction)

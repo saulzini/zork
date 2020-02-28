@@ -2,5 +2,5 @@
 
 MonsterRoom::MonsterRoom(const char* name, const char* description) : Room(name, description)
 {
-	type = MONSTERROOM;
+	type = EntityType::MONSTERROOM;
 }

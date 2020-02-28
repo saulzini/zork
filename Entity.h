@@ -1,19 +1,10 @@
 #pragma once
 #include <string>
 #include <list>
-
+#include "EntityType.h"
 class Item;
 using namespace std;
-enum EntityType
-{
-	ENTITY,
-	ROOM,
-	EXIT,
-	ITEM,
-	CREATURE,
-	PLAYER,
-	MONSTERROOM,
-};
+
 class Entity
 {
 

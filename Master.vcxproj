@@ -163,6 +163,7 @@
     <ClInclude Include="Creature.h" />
     <ClInclude Include="DecisionManager.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityType.h" />
     <ClInclude Include="Exit.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />

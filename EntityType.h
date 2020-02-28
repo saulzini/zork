@@ -1,15 +1,11 @@
 #pragma once
-class EntityType
+enum class EntityType
 {
-	enum EntityType
-	{
-		ENTITY,
-		ROOM,
-		EXIT,
-		ITEM,
-		CREATURE,
-		PLAYER,
-		MONSTERROOM,
-	};
+	ENTITY,
+	ROOM,
+	EXIT,
+	ITEM,
+	CREATURE,
+	PLAYER,
+	MONSTERROOM,
 };
-

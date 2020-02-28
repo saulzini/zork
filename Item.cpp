@@ -3,7 +3,7 @@
 
 Item::Item(const char* name, const char* description, Entity* parent, ItemType itemType):Entity(name, description, parent),itemType(itemType)
 {
-	type = ITEM;
+	type = EntityType::ITEM;
 
 	if (itemType == ItemType::WEAPON) {
 		damage = defaultDamage;

@@ -7,7 +7,7 @@ Exit::Exit(const char* name, const char* destinationName, const char* descriptio
 	Entity(name, description, (Entity*)source),
 	closed(true), locked(false), key(NULL), destination(destination)
 {
-	type = EXIT;
+	type = EntityType::EXIT;
 
 	if (description) {
 		destination->contains.push_back(this);

@@ -4,7 +4,7 @@
 #include "World.h"
 Room::Room(const char* name, const char* description) : Entity(name, description, NULL)
 {
-	type = ROOM;
+	type = EntityType::ROOM;
 }
 
 void Room::SetExit(const char* key, Exit* exit)
@@ -28,7 +28,7 @@ void Room::DisplayDescription()
 void Room::SolveRoom()
 {
 	//Checking if it is the monter room and the npc is alive
-	if (type == MONSTERROOM && world && world->IsNPCAlive()) {
+	if (type == EntityType::MONSTERROOM && world && world->IsNPCAlive()) {
 		world->setBattleModeOn(true);
 	}
 

@@ -3,7 +3,7 @@
 #include "Item.h"
 Entity::Entity(const char* name, const char* description, Entity* parentEntity = NULL):name(name), description(description), parent(parentEntity)
 {
-	type = ENTITY;
+	type = EntityType::ENTITY;
 	
 	if (parentEntity != NULL) {
 		parent->contains.push_back(this);
