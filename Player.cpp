@@ -86,11 +86,24 @@ void Player::SolvePickup(string itemName)
 void Player::PickItem( Item* item, Entity *parent)
 {
 	SolveItem(item, parent, true);
+	//Checking if it is a bag to update hash insert of the contains
+	if (item->itemType == ItemType::BAG) {
+		for (auto child : item->contains) {
+			SetItem((Item*)child);
+		}
+	}
 }
 
 void Player::TossItem(Item* item, Entity* parent)
 {
 	SolveItem(item, parent, false);
+	//Checking if it is a bag to update hash delete of the contains
+	if (item->itemType == ItemType::BAG) {
+		for (auto child : item->contains) {
+			UnsetItem((Item *)child);
+		}
+	}
+
 }
 
 void Player::SolveItem(Item* item, Entity* parent, bool pick)

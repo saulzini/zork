@@ -18,7 +18,7 @@ public:
 	NPC* enemy;
 
 	bool missionComplete = false;
-	bool battle;
+	bool battle = false;
 	bool IsPlayerAlive();
 	bool IsNPCAlive();
 	bool IsMissionComplete();

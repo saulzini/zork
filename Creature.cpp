@@ -32,18 +32,20 @@ void Creature::UnsetItem(Item *item)
 
 Item* Creature::GetItemByItemType(ItemType key)
 {
-	Item* item = itemsByItemType[key];
-	if (item) {
-		return item;
+	map<ItemType, Item*>::iterator it;
+	it = itemsByItemType.find(key);
+	if (it != itemsByItemType.end()) {
+		return it->second;
 	}
 	return NULL;
 }
 
 Item* Creature::GetItemByName(string itemName)
 {
-	Item* item = itemsByName[itemName];
-	if (item) {
-		return item;
+	map<string, Item*>::iterator it;
+	it = itemsByName.find(itemName);
+	if (it != itemsByName.end()) {
+		return it->second;
 	}
 	return NULL;
 }
