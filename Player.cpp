@@ -40,8 +40,15 @@ void Player::SolveToss(string itemName)
 	//If the item is found
 	if (item) {
 		Room* room = GetCurrentRoom();
-		TossItem(item, room);
-		cout << "I have toss the item" << endl;
+		if (item->itemType == ItemType::WEAPON || item->itemType == ItemType::KEY) {
+			TossItem(item, room);
+			cout << "I have take out the " << item->name << " of the bag and toss the item into the room" << endl;
+		}
+		else {
+			TossItem(item, room);
+			cout << "I have toss the "<<item->name<<" into the room" << endl;
+		}
+
 	}
 	else {
 		cout << "I don't have that item" << endl;
