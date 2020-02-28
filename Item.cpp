@@ -1,8 +1,41 @@
 #include "Item.h"
 #include <iostream>
 
-Item::Item(const char* name, const char* description, Entity* parent, ItemType item_type):Entity(name, description, parent),item_type(item_type)
+Item::Item(const char* name, const char* description, Entity* parent, ItemType itemType):Entity(name, description, parent),itemType(itemType)
 {
 	type = ITEM;
-	//cout << "Item created with name:"<< name << "  , description " << description << ", type:" << type << " item type " << item_type <<endl;
+
+	if (itemType == ItemType::WEAPON) {
+		damage = defaultDamage;
+		attackSuccessRate = defaultAttackSuccessRate;
+	}
+}
+
+void Item::SetDamage(float damage)
+{
+	this->damage = damage;
+}
+
+void Item::SetAttackSuccessRate(float attackSuccessRate)
+{
+	this->attackSuccessRate = attackSuccessRate;
+}
+
+float Item::CalculateInflictedDamage()
+{
+	int random = rand() % 100 + 1;
+
+	return random >= attackSuccessRate ? damage : 0;
+}
+
+
+Item* Item::GetItem(ItemType entityType)
+{
+	for (auto entity : contains) {
+		Item* item = (Item*)entity;
+		if (item->itemType == entityType) {
+			return item;
+		}
+	}
+	return NULL;
 }

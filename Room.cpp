@@ -1,6 +1,7 @@
 #include "Room.h"
 #include <iostream>
 #include "Exit.h"
+#include "World.h"
 Room::Room(const char* name, const char* description) : Entity(name, description, NULL)
 {
 	type = ROOM;
@@ -24,6 +25,18 @@ void Room::DisplayDescription()
 	cout << description << endl;
 }
 
+void Room::SolveRoom()
+{
+	//Checking if it is the monter room and the npc is alive
+	if (type == MONSTERROOM && world && world->IsNPCAlive()) {
+		world->setBattleModeOn(true);
+	}
+
+	//Displaying message of the new room
+	DisplayDescription();
+}
+
+
 Room* Room::SolveMovement(string direction)
 {
 	Exit *exit = GetExit(direction);
@@ -32,13 +45,12 @@ Room* Room::SolveMovement(string direction)
 	if (exit) {
 		//checking if the door is closed
 		if (exit->IsClosed()) {
-			cout << "The door is closed, maybe I should try to openning it first" << endl;
+			cout << "The door is closed, maybe I should try to open it first" << endl;
 		}
 		else {
-			newRoom = exit->GetCurrentDestinationRoom(this);
 
-			//Displaying message of the new room
-			newRoom->DisplayDescription();
+			newRoom = exit->GetCurrentDestinationRoom(this);
+			newRoom->SolveRoom();
 		}
 	}
 	else {
@@ -58,4 +70,9 @@ Room* Room::SolveOpenDoor(string direction,Item *key)
 		cout << "No exit on that direction" << endl;
 	}
 	return newRoom;
+}
+
+void Room::SetWorld(World* world)
+{
+	this->world = world;
 }

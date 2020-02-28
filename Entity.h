@@ -2,8 +2,8 @@
 #include <string>
 #include <list>
 
+class Item;
 using namespace std;
-
 enum EntityType
 {
 	ENTITY,
@@ -11,9 +11,9 @@ enum EntityType
 	EXIT,
 	ITEM,
 	CREATURE,
-	PLAYER
+	PLAYER,
+	MONSTERROOM,
 };
-
 class Entity
 {
 
@@ -25,5 +25,8 @@ public:
 	list<Entity*> contains;
 	Entity* parent;
 	void ChangeParent(Entity* newParent);
+	int FindEntityIndex(EntityType entityType);
+	Entity* GetEntity(EntityType entityType);
+	Entity* GetEntityByString(string name);
 };
 

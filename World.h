@@ -18,12 +18,12 @@ public:
 	NPC* enemy;
 
 	bool missionComplete = false;
-	bool battle = false;
+	bool battle;
 	bool IsPlayerAlive();
 	bool IsNPCAlive();
 	bool IsMissionComplete();
+	bool IsBattleModeOn();
 
-	//bool playerHasWeapon();
-	Room* GetPlayerCurrentRoom();
+	void setBattleModeOn(bool battle);
 };
 

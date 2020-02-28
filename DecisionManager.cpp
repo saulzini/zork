@@ -31,76 +31,105 @@ void DecisionManager::ManageDecision()
 	//Commands availables
 	string command = words[0];
 
-	if ( command == "move" ) {
-		SolveMove();
-	}
-	else if (command == "open") {
-		SolveOpenDoor();
-	}
-	else if ( command == "pick" ) {
-		SolvePick();
-	}
-	else if ( command == "toss") {
-		SolveToss();
-	}
-	else if (command == "attack") {
-		SolveAttack();
+	//Checking if is battle mode
+	if (IsBattleModeOn()) {
+		if (command == "attack") {
+			SolveAttack();
+		}
+		else {
+			cout << "I cant escape, I can only attack" << endl;
+		}
 	}
 	else {
-		Unsolved();
+		if (command == "move") {
+			SolveMove();
+		}
+		else if (command == "open") {
+			SolveOpenDoor();
+		}
+		else if (command == "pick") {
+			SolvePick();
+		}
+		else if (command == "toss") {
+			SolveToss();
+		}
+		else if (command == "read") {
+
+		}
+		else {
+			Unsolved();
+		}
 	}
+	
 	ClearInput();
 }
 
-void DecisionManager::Initialize()
-{
-	Room *room = world->GetPlayerCurrentRoom();
-	room->DisplayDescription();
-}
 
 void DecisionManager::SolveMove()
 {
-	if (words.size() > 1) {
+	if (words.size() == 2) {
 		world->player->SolveMovement(words[1]);
 	}
 	else {
-		cout << "Command move incomplete: missing direction word" << endl;
+		cout << "Command not found movement i.e. move east" << endl;
 	}
 
 }
 
 void DecisionManager::SolveOpenDoor()
 {
-	if (words.size() > 1) {
+	//I.E. open east door
+	if (words.size() == 3 && words[2] == "door") {
 		world->player->SolveOpenDoor(words[1]);
 	}
 	else {
-		cout << "Command open door incomplete: missing direction word" << endl;
+		cout << "Command not found open door i.e. open east door" << endl;
 	}
 }
 
 void DecisionManager::SolvePick()
 {
-	cout << "pick is selected" << endl;
+	if (words.size() == 2) {
+		world->player->SolvePickup(words[1]);
+	}
+	else {
+		cout << "Command not found movement i.e. pick letter" << endl;
+	}
 }
 
 void DecisionManager::SolveToss()
 {
-	cout << "toss is selected" << endl;
+	if (words.size() == 2) {
+		world->player->SolveToss(words[1]);
+	}
+	else {
+		cout << "Command not found movement i.e. pick letter" << endl;
+	}
 }
 
 void DecisionManager::SolveAttack()
 {
 	cout << "attack is selected" << endl;
+	if (words.size() == 2) {
+		world->player->SolveMovement(words[1]);
+	}
+	else {
+		cout << "Command not found movement i.e. attack using sword" << endl;
+	}
 }
 
 void DecisionManager::Unsolved()
 {
-	cout << "Command not found, please try again: move,pick,toss,attack" << endl;
+	cout << "Command not found, please try again: move,open,pick,toss" << endl;
 }
 
 void DecisionManager::ClearInput()
 {
 	decision = "";
 	words.clear();
+}
+
+bool DecisionManager::IsBattleModeOn()
+{
+	return world->battle;
 }

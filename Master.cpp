@@ -11,7 +11,6 @@ int main(int argc, char* argv[])
 	cout << "Welcome to your new conquest \nThe mission in this game is to get free from the dungeon.\nLet's Begin\n" << endl;
 	World *world = new World();
 	DecisionManager* decisionManager = new DecisionManager(world);
-	decisionManager->Initialize();
 
 	while (world->IsPlayerAlive() && !world->IsMissionComplete() )
 	{

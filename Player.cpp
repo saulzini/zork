@@ -27,8 +27,97 @@ void Player::SolveOpenDoor(string direction)
 	currentRoom->SolveOpenDoor(direction,GetKey());
 }
 
-Item* Player::GetKey()
+void Player::SolveAttack(string itemName)
 {
-	return nullptr;
+	//TODO:: USE HASH
 }
 
+void Player::SolveToss(string itemName)
+{
+	//Map string name to item
+	//Find in player
+	Item* item = GetItemByName(itemName);
+	//If the item is found
+	if (item) {
+		Room* room = GetCurrentRoom();
+		TossItem(item, room);
+		cout << "I have toss the item" << endl;
+	}
+	else {
+		cout << "I don't have that item" << endl;
+	}
+}
+
+void Player::SolvePickup(string itemName)
+{
+	//Find in room
+	Room* room = GetCurrentRoom();
+	Item* item = (Item*)room->GetEntityByString(itemName);
+	//If the item was found
+	if (item) {
+		
+		//Check if it is the key or sword
+		//Key and weapon only store if the player has a bag
+		if (item->itemType == ItemType::WEAPON || item->itemType == ItemType::KEY) {
+			//Check if it has a bag
+			Item* bag = GetBag();
+			if (bag) {
+				PickItem(item, bag);
+				cout << "The " << item->name << " has been picked and saved in the bag." << endl;
+			}
+			else {
+				//if not display it needs it
+				cout << "I need a bag, to carry this item" << endl;
+			}
+		}
+		else {
+			//Add to the player the items
+			PickItem(item,this);
+			cout << "The " << item->name << " has been picked." << endl;
+		}
+	}
+	else {
+		cout << "Item not found in the room" << endl;
+	}
+}
+
+
+
+void Player::PickItem( Item* item, Entity *parent)
+{
+	SolveItem(item, parent, true);
+}
+
+void Player::TossItem(Item* item, Entity* parent)
+{
+	SolveItem(item, parent, false);
+}
+
+void Player::SolveItem(Item* item, Entity* parent, bool pick)
+{
+	//Assign new parent
+	item->ChangeParent(parent);
+	if (pick) {
+		//Assign it to hashes
+		SetItem(item);
+	}
+	else {
+		//Deleting from hashes
+		UnsetItem(item);
+	}
+}
+
+Item* Player::GetKey()
+{	
+	return GetItemByItemType(ItemType::KEY);
+}
+
+Item* Player::GetWeapon()
+{
+	return GetItemByItemType(ItemType::WEAPON);
+}
+
+Item* Player::GetBag()
+{
+	return GetItemByItemType(ItemType::BAG);
+}

@@ -16,7 +16,6 @@ public:
 	void ParseDecision();
 	void ManageDecision();
 
-	void Initialize();
 	void SolveMove();
 	void SolveOpenDoor();
 	void SolvePick();
@@ -24,6 +23,8 @@ public:
 	void SolveAttack();
 	void Unsolved();
 	void ClearInput();
+
+	bool IsBattleModeOn();
 
 };
 

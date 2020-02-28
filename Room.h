@@ -6,6 +6,7 @@ using namespace std;
 
 class Exit;
 class Item;
+class World;
 
 class Room : public Entity
 {
@@ -15,9 +16,11 @@ public:
 	void SetExit(const char* key,Exit* exit);
 	Exit *GetExit(string key);
 	void DisplayDescription();
+	void SolveRoom();
 
 	Room* SolveMovement(string direction);
 	Room* SolveOpenDoor(string direction,Item *key);
-
+	World* world;
+	void SetWorld(World* world);
 };
 
