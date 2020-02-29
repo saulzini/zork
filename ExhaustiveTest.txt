@@ -1,24 +1,50 @@
+move west
+move north
+move south
 pick letter
 read letter
+toss letter
+toss letter
+move east
 open east door
 move east
 pick note
 read note
+toss note
+toss note
+move east
+open east
 open south door
 move south
-pick bag
 open south door
 move south
 pick key
 pick sword
+move north
+pick bag
+move south
+toss key
+pick key
+pick key
+pick sword
+toss sword
+toss sword
+toss bag
+toss sword
+pick bag
+pick sword
+move north
 move north
 move north
 open east door
 move east
 
 ----------Attack until the enemy is dead----------
+attack monster using key
 attack monster using sword
 -------------------End Attack --------------------
 
+move south
+open south door
 open north door
 move north

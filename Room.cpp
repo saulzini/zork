@@ -40,6 +40,7 @@ void Room::SolveRoom()
 	}
 	//Mission complete
 	else if (type == EntityType::VICTORIOUSROOM) {
+		DisplayDescription();
 		world->setMissionComplete(true);
 	}
 	else {

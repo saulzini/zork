@@ -46,11 +46,11 @@ World::World()
 	Item* axe = new Item("axe", "Axe made of steel", room5, ItemType::WEAPON);
 
 	//Setting sword parameters
-	sword->SetAttackSuccessRate(30);
+	sword->SetAttackSuccessRate(35);
 	sword->SetDamage(50);
 	//Setting axe parameters
-	axe->SetAttackSuccessRate(90);
-	axe->SetDamage(10);
+	axe->SetAttackSuccessRate(60);
+	axe->SetDamage(15);
 	//Monster picking the item
 	enemy->PickItem(axe, enemy);
 
