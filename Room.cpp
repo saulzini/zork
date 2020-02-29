@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Exit.h"
 #include "World.h"
+#include "MonsterRoom.h"
 Room::Room(const char* name, const char* description) : Entity(name, description, NULL)
 {
 	type = EntityType::ROOM;
@@ -29,11 +30,23 @@ void Room::SolveRoom()
 {
 	//Checking if it is the monter room and the npc is alive
 	if (type == EntityType::MONSTERROOM && world && world->IsNPCAlive()) {
+		DisplayDescription();
 		world->setBattleModeOn(true);
 	}
+	//The enemy is dead
+	else if (type == EntityType::MONSTERROOM && world && !world->IsNPCAlive()) {
+		MonsterRoom* monsterRoom = (MonsterRoom*)this;
+		monsterRoom->DisplaySuccessRoom();
+	}
+	//Mission complete
+	else if (type == EntityType::VICTORIOUSROOM) {
+		world->setMissionComplete(true);
+	}
+	else {
+		//Displaying message of the new room
+		DisplayDescription();
+	}
 
-	//Displaying message of the new room
-	DisplayDescription();
 }
 
 

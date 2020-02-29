@@ -27,9 +27,37 @@ void Player::SolveOpenDoor(string direction)
 	currentRoom->SolveOpenDoor(direction,GetKey());
 }
 
-void Player::SolveAttack(string itemName)
+float Player::CalculateAttack(string itemName)
 {
-	//TODO:: USE HASH
+	Item* item = GetItemByName(itemName);
+	float damage = 0;
+	if ( item ) {
+		if (item->itemType == ItemType::WEAPON) {
+			damage = item->CalculateInflictedDamage();
+		}
+		else {
+			cout << "I can't attack with this, maybe I should try with a weapon." << endl;
+		}
+	}
+	else {
+		cout << "I don't have this item" << endl;
+	}
+
+	if (damage == 0) {
+		cout << "I have missed an oportunity" << endl;
+	}
+	return damage;
+}
+
+void Player::SolveRead(string itemName)
+{
+	Item* item = GetItemByName(itemName);
+	if (item->itemType == ItemType::LETTER || item->itemType == ItemType::NOTE) {
+		cout << item->description << endl;
+	}
+	else {
+		cout << "I can't read this item" << endl;
+	}
 }
 
 void Player::SolveToss(string itemName)
@@ -89,52 +117,9 @@ void Player::SolvePickup(string itemName)
 }
 
 
-
-void Player::PickItem( Item* item, Entity *parent)
-{
-	SolveItem(item, parent, true);
-	//Checking if it is a bag to update hash insert of the contains
-	if (item->itemType == ItemType::BAG) {
-		for (auto child : item->contains) {
-			SetItem((Item*)child);
-		}
-	}
-}
-
-void Player::TossItem(Item* item, Entity* parent)
-{
-	SolveItem(item, parent, false);
-	//Checking if it is a bag to update hash delete of the contains
-	if (item->itemType == ItemType::BAG) {
-		for (auto child : item->contains) {
-			UnsetItem((Item *)child);
-		}
-	}
-
-}
-
-void Player::SolveItem(Item* item, Entity* parent, bool pick)
-{
-	//Assign new parent
-	item->ChangeParent(parent);
-	if (pick) {
-		//Assign it to hashes
-		SetItem(item);
-	}
-	else {
-		//Deleting from hashes
-		UnsetItem(item);
-	}
-}
-
 Item* Player::GetKey()
 {	
 	return GetItemByItemType(ItemType::KEY);
-}
-
-Item* Player::GetWeapon()
-{
-	return GetItemByItemType(ItemType::WEAPON);
 }
 
 Item* Player::GetBag()

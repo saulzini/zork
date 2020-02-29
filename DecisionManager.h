@@ -4,12 +4,14 @@
 using namespace std;
 
 class World;
+class BattleManager;
 
 class DecisionManager
 {
 public:
 	DecisionManager(World* world);
 	World *world;
+	BattleManager *battleManager;
 	string decision;
 	vector<string> words;
 
@@ -20,6 +22,7 @@ public:
 	void SolveOpenDoor();
 	void SolvePick();
 	void SolveToss();
+	void SolveRead();
 	void SolveAttack();
 	void Unsolved();
 	void ClearInput();

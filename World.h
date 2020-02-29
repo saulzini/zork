@@ -25,5 +25,6 @@ public:
 	bool IsBattleModeOn();
 
 	void setBattleModeOn(bool battle);
+	void setMissionComplete(bool missionComplete);
 };
 

@@ -4,9 +4,11 @@
 #include <iostream>
 #include <sstream>
 #include "Player.h"
-DecisionManager::DecisionManager(World* world)
+#include "BattleManager.h"
+DecisionManager::DecisionManager(World *world)
 {
 	this->world = world;
+	battleManager = new BattleManager(world);
 }
 
 void DecisionManager::ParseDecision()
@@ -54,7 +56,7 @@ void DecisionManager::ManageDecision()
 			SolveToss();
 		}
 		else if (command == "read") {
-
+			SolveRead();
 		}
 		else {
 			Unsolved();
@@ -103,18 +105,27 @@ void DecisionManager::SolveToss()
 		world->player->SolveToss(words[1]);
 	}
 	else {
-		cout << "Command not found movement i.e. pick letter" << endl;
+		cout << "Command not found toss i.e. toss letter" << endl;
+	}
+}
+
+void DecisionManager::SolveRead()
+{
+	if (words.size() == 2) {
+		world->player->SolveRead(words[1]);
+	}
+	else {
+		cout << "Command not found read i.e. read letter" << endl;
 	}
 }
 
 void DecisionManager::SolveAttack()
 {
-	cout << "attack is selected" << endl;
-	if (words.size() == 2) {
-		world->player->SolveMovement(words[1]);
+	if (words.size() == 4) {
+		battleManager->handleBattle(words[1], words[3]);
 	}
 	else {
-		cout << "Command not found movement i.e. attack using sword" << endl;
+		cout << "Command not found attack i.e. attack monster using sword" << endl;
 	}
 }
 

@@ -8,4 +8,5 @@ enum class EntityType
 	CREATURE,
 	PLAYER,
 	MONSTERROOM,
+	VICTORIOUSROOM,
 };

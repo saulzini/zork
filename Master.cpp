@@ -17,7 +17,8 @@ int main(int argc, char* argv[])
 		getline(cin,decisionManager->decision);
 		decisionManager->ManageDecision();
 	}
-	cout << "Thanks for playing" << endl;
+	cout << "--------------Thanks for playing-------------" << endl;
+	cout << "---------------------BYE---------------------" << endl;
 	return 0;
 }
 

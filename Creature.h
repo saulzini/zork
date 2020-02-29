@@ -2,7 +2,6 @@
 #include "Entity.h"
 #include <map> 
 #include "ItemType.h"
-
 class Room;
 class Item;
 
@@ -19,5 +18,9 @@ public:
 	void UnsetItem(Item* item);
 	Item* GetItemByItemType(ItemType key);
 	Item* GetItemByName(string itemName);
+	void PickItem(Item* item, Entity* parent);
+	void TossItem(Item* item, Entity* parent);
+	void SolveItem(Item* item, Entity* parent, bool pick);
+	void ReceivedDamage(float damageTaken,Creature *instigator);
 };
 

@@ -1,0 +1,28 @@
+pick letter
+read letter
+open east door
+move east
+pick note
+read note
+open south door
+move south
+pick bag
+open south door
+move south
+pick key
+pick sword
+move north
+move north
+open east door
+move east
+
+attack monster using sword
+
+open north door
+move north
+
+
+attack monster using sword
+
+open north door
+move north

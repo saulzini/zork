@@ -24,8 +24,7 @@ void Item::SetAttackSuccessRate(float attackSuccessRate)
 float Item::CalculateInflictedDamage()
 {
 	int random = rand() % 100 + 1;
-
-	return random >= attackSuccessRate ? damage : 0;
+	return random >= (100-attackSuccessRate) ? damage : 0;
 }
 
 
