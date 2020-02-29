@@ -101,6 +101,13 @@ A  test can be found in
 ```
 Zork/ExhaustiveTest.txt
 ```
+## Map
+
+The map can be found in
+
+```
+Zork/LevelZork.png
+```
 ## Deploy
 The executable can be found in the releases
 
