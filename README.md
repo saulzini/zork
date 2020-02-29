@@ -102,10 +102,8 @@ A  test can be found in
 Zork/ExhaustiveTest.txt
 ```
 ## Deploy
-The executable can be found at
-```
-Zork/Zork.exe
-```
+The executable can be found in the releases
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://bitbucket.com/saulzini) for details on our code of conduct, and the process for submitting pull requests to us.
