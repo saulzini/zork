@@ -19,6 +19,7 @@ int main(int argc, char* argv[])
 	}
 	cout << "--------------Thanks for playing-------------" << endl;
 	cout << "---------------------BYE---------------------" << endl;
+	system("pause");
 	return 0;
 }
 

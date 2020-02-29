@@ -68,7 +68,7 @@ Room* Room::SolveMovement(string direction)
 		}
 	}
 	else {
-		cout << "No exit on that direction" << endl;
+		cout << "No door on that direction" << endl;
 	}
 	return newRoom;
 }
@@ -81,7 +81,7 @@ Room* Room::SolveOpenDoor(string direction,Item *key)
 		exit->OpenExit(key);
 	}
 	else {
-		cout << "No exit on that direction" << endl;
+		cout << "No door on that direction" << endl;
 	}
 	return newRoom;
 }
