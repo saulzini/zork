@@ -4,7 +4,7 @@ C++ Test - Simple Zork Game Assignment
 
 ## Getting Started
 
-The objective's game is to escape from the dungeon by recolecting the items and defeating your enemy.
+The objective's game is to escape from the dungeon by recolecting the items, defeating your enemy and finally reach the forest.
 
 ### Moving between Rooms
 
