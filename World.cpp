@@ -22,10 +22,20 @@ World::World()
 	VictoriousRoom *room6 = new VictoriousRoom("Forest", "You are in the Forest, Your journey has finish, Thanks for playing :)");
 	room6->SetWorld(this);
 
+	entities.push_back(room1);
+	entities.push_back(room2);
+	entities.push_back(room3);
+	entities.push_back(room4);
+	entities.push_back(room5);
+	entities.push_back(room6);
+
 	//Creating player in the room 1
 	player = new Player("player", "Character moved by user", room1);
+	entities.push_back(player);
+
 	//Creating NPC in the room 5
 	enemy = new NPC("monster", "Npc character", room5);
+	entities.push_back(enemy);
 
 	//Creating the doors 
 	Exit* exitOneToTwo    = new Exit("east","west", "Door between Room 1 and 2", room1, room2);
@@ -33,6 +43,11 @@ World::World()
 	Exit* exitTwoToFive   = new Exit("east","west", "Door between Room 2 and 5", room2, room5);
 	Exit* exitThreeToFour = new Exit("south","north", "Door between Room 3 and 4", room3, room4);
 	Exit* exitFiveToSix   = new Exit("north","south", "Door between Room 5 and 6", room5, room6);
+	entities.push_back(exitOneToTwo);
+	entities.push_back(exitTwoToThree);
+	entities.push_back(exitTwoToFive);
+	entities.push_back(exitThreeToFour);
+	entities.push_back(exitFiveToSix);
 
 	//Locking door
 	exitTwoToFive->SetLocked(true);
@@ -45,6 +60,14 @@ World::World()
 	Item* sword = new Item("sword", "A sharp sword made of silver", room4, ItemType::WEAPON);
 	Item* axe = new Item("axe", "Axe made of steel", room5, ItemType::WEAPON);
 
+	entities.push_back(letterRoom1);
+	entities.push_back(letterRoom2);
+	entities.push_back(bag);
+	entities.push_back(key);
+	entities.push_back(sword);
+	entities.push_back(axe);
+
+
 	//Setting sword parameters
 	sword->SetAttackSuccessRate(35);
 	sword->SetDamage(50);
@@ -56,6 +79,15 @@ World::World()
 
 	//Initializing in the room
 	player->GetCurrentRoom()->SolveRoom();
+}
+
+World::~World()
+{
+	//Clearing entities
+	for (list<Entity*>::iterator entity = entities.begin(); entity != entities.end(); ++entity) {
+		delete* entity;
+	}
+	entities.clear();
 }
 
 bool World::IsPlayerAlive()

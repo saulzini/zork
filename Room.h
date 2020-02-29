@@ -20,7 +20,7 @@ public:
 
 	Room* SolveMovement(string direction);
 	Room* SolveOpenDoor(string direction,Item *key);
-	World* world;
+	World* world = NULL;
 	void SetWorld(World* world);
 };
 

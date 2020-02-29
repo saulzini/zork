@@ -13,6 +13,8 @@ class World
 {	
 public:
 	World();
+	~World();
+
 	list<Entity*> entities;
 	Player* player;
 	NPC* enemy;
