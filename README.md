@@ -20,7 +20,7 @@ I.E move north , move east , move south , move west.
 
 ------------
 
-Initially all the doors are closed and doesn't a key except for the door in the room 2 on the east direction ( this door needs the key  ).
+Initially all the doors are closed and doesn't need a key except for the door in the room 2 on the east direction ( this door needs the key  ).
 
 For unlocking the door is automatically detected when you have the key and try to open the door.
 
