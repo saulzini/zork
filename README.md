@@ -6,7 +6,7 @@ C++ Test - Simple Zork Game Assignment
 
 The game consist in escaping from the dungeon by recolecting the items and defeating your enemy.
 
-###Moving between Rooms
+### Moving between Rooms
 
 ------------
 
@@ -14,7 +14,7 @@ For moving between rooms (considering that the door is open), you are not allowe
 Command: "move " + direction
 I.E move north , move east , move south , move west.
 
-###Opening doors
+### Opening doors
 
 ------------
 
@@ -23,7 +23,7 @@ For unlocking the door is automatically detected when you have the key and try t
 Command: "open " + direction + " door"
 I.E open north door.
 
-###Picking up items
+### Picking up items
 
 ------------
 
@@ -32,7 +32,7 @@ Items can be picked up.
 Command: "pick " + item
 I.E pick letter, pick sword , pick bag.
 
-###Toss/Drop items
+### Toss/Drop items
 
 ------------
 
@@ -41,7 +41,7 @@ Items can be tossed/dropped.
 Command: "toss " + item
 I.E toss letter, toss sword, toss bag.
 
-###Read items
+### Read items
 
 ------------
 
@@ -50,7 +50,7 @@ Items can be read.
 Command: "read " + item
 I.E read letter, read note.
 
-###Attack
+### Attack
 
 ------------
 
@@ -61,7 +61,7 @@ Enemy will attack also.
 Command: "attack " + name of the enemy +  " using " + item
 I.E attack monster using sword, attack monster using key.
 
-###Command not found
+### Command not found
 
 ------------
 
@@ -75,7 +75,7 @@ The solution can be found in
 Zork/Solution.txt
 ```
 
-### Test
+## Test
 
 A  test can be found in
 
